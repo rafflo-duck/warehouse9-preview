@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>WAREHOUSE 9 — A raw creative space for music makers · Barcelona</title>
+<meta name="description" content="WAREHOUSE is a raw creative space for music makers in Barcelona. A school, a studio and a live room where ideas become sound." />
+<meta name="robots" content="noindex, nofollow" />
+
+<!-- Tailwind (CDN, sin instalación) -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Tipografías: display condensada + grotesk digital + body -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          black: '#0a0a0a',        // Matte Black
+          concrete: '#151515',      // Concrete Grey (surfaces)
+          concrete2: '#1e1e1e',     // Concrete Grey (cards)
+          line: '#2c2c2c',          // hard grid lines
+          off: '#ededea',           // Off White
+          mute: '#8a8a85',          // muted text
+          acid: '#ededea',          // acento monocromo (off-white)
+        },
+        fontFamily: {
+          display: ['"Bebas Neue"', 'sans-serif'],
+          grotesk: ['"Space Grotesk"', 'sans-serif'],
+          body: ['Inter', 'sans-serif'],
+        },
+      },
+    },
+  };
+</script>
+
+<style>
+  html { scroll-behavior: smooth; }
+  body { background:#0a0a0a; }
+  ::selection { background:#ededea; color:#0a0a0a; }
+
+  .tracking-mega { letter-spacing: 0.02em; }
+  .label { letter-spacing: 0.28em; text-transform: uppercase; }
+
+  /* grano/textura sutil de estudio */
+  .grain::before{
+    content:""; position:absolute; inset:0; pointer-events:none; z-index:1; opacity:.06;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* reveal on scroll */
+  .reveal{ opacity:0; transform:translateY(24px); transition:opacity .8s ease, transform .8s ease; }
+  .reveal.in{ opacity:1; transform:none; }
+
+  .underline-acid{ background-image:linear-gradient(#ededea,#ededea); background-size:0% 1px; background-repeat:no-repeat; background-position:0 100%; transition:background-size .35s ease; }
+  .group:hover .underline-acid, a:hover .underline-acid{ background-size:100% 1px; }
+
+  .btn-acid{ background:#ededea; color:#0a0a0a; transition:transform .2s ease, box-shadow .2s ease; }
+  .btn-acid:hover{ transform:translateY(-2px); box-shadow:0 12px 30px -14px rgba(237,237,234,.5); }
+  .btn-ghost{ border:1px solid #2c2c2c; color:#ededea; transition:border-color .2s ease, color .2s ease; }
+  .btn-ghost:hover{ border-color:#ededea; }
+
+  .card-way{ transition:transform .3s ease, border-color .3s ease, background .3s ease; }
+  .card-way:hover{ transform:translateY(-4px); border-color:#5a5a5a; background:#1e1e1e; }
+</style>
+</head>
+
+<body class="bg-black text-off font-body antialiased">
+
+<!-- ░░ HEADER STICKY ░░ -->
+<header class="fixed top-0 inset-x-0 z-50 border-b border-line/60 bg-black/80 backdrop-blur-md">
+  <div class="mx-auto max-w-[1400px] px-5 md:px-8 h-16 flex items-center justify-between">
+    <a href="#top" class="font-display text-2xl tracking-mega leading-none">WAREHOUSE&nbsp;<span class="text-acid">9</span></a>
+    <nav class="hidden lg:flex items-center gap-8 font-grotesk text-[13px] label text-mute">
+      <a href="#learn"   class="hover:text-off transition-colors">Masterclasses</a>
+      <a href="#create"  class="hover:text-off transition-colors">Mentoring</a>
+      <a href="#perform"  class="hover:text-off transition-colors">Live Sets</a>
+      <a href="#sessions" class="hover:text-off transition-colors">Sessions</a>
+      <a href="#room"     class="hover:text-off transition-colors">The Room</a>
+      <a href="#artists" class="hover:text-off transition-colors">Artists</a>
+    </nav>
+    <a href="#book" class="btn-acid font-grotesk text-[13px] font-600 label px-5 py-2.5">Book Intro Session</a>
+  </div>
+</header>
+
+<!-- ░░ HERO ░░ -->
+<section id="top" class="bg-black">
+  <!-- La foto del espacio, completa y nítida — es parte del brand -->
+  <div class="pt-16">
+    <img src="assets/hero.png" alt="Fachada WAREHOUSE 9 — Barcelona"
+         class="block w-full h-auto" />
+  </div>
+
+  <!-- Bloque editorial debajo -->
+  <div class="mx-auto max-w-[1400px] w-full px-5 md:px-8 pt-14 md:pt-20 pb-20 md:pb-28">
+    <div class="flex items-center gap-3 mb-8 font-grotesk text-[12px] label text-mute">
+      <span class="inline-block w-2 h-2 rounded-full bg-off"></span>
+      Barcelona · Nº 9
+    </div>
+
+    <h1 class="font-display text-[17vw] md:text-[12vw] leading-[0.82] tracking-mega text-off">WAREHOUSE&nbsp;<span class="text-mute">9</span></h1>
+
+    <div class="mt-10 grid md:grid-cols-12 gap-8">
+      <p class="md:col-span-7 font-grotesk text-xl md:text-2xl text-off font-500 leading-snug">
+        A raw creative space for music makers.<br class="hidden md:block" />
+        A school, a studio and a live room where ideas become sound.
+      </p>
+      <p class="md:col-span-5 text-mute leading-relaxed">
+        Masterclasses intensivas, mentorías privadas, producción musical y live sets para DJs, productores y artistas que quieren avanzar con dirección real.
+      </p>
+    </div>
+
+    <div class="mt-10 flex flex-wrap gap-3">
+      <a href="#book" class="btn-acid font-grotesk font-600 label text-sm px-8 py-4">Book Intro Session</a>
+      <a href="#learn" class="btn-ghost font-grotesk font-500 label text-sm px-8 py-4">View Masterclasses</a>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ BRAND STATEMENT ░░ -->
+<section class="border-t border-line">
+  <div class="mx-auto max-w-[1400px] px-5 md:px-8 py-24 md:py-36">
+    <div class="grid md:grid-cols-12 gap-10">
+      <div class="md:col-span-2">
+        <span class="font-grotesk label text-[12px] text-acid">01 — Idea</span>
+      </div>
+      <div class="md:col-span-10 reveal">
+        <h2 class="font-display text-6xl md:text-8xl leading-[0.9] tracking-mega mb-10">Where ideas become sound.</h2>
+        <p class="text-mute text-lg max-w-2xl leading-relaxed mb-12">
+          WAREHOUSE es un espacio físico para entrar con una intención y salir con algo más claro, más sólido y más real.
+        </p>
+        <div class="grid sm:grid-cols-2 gap-x-12 gap-y-5 max-w-3xl font-grotesk text-lg">
+          <p class="border-l-2 border-line pl-4">Una idea puede convertirse en <span class="text-off">técnica</span>.</p>
+          <p class="border-l-2 border-line pl-4">Un loop puede convertirse en <span class="text-off">track</span>.</p>
+          <p class="border-l-2 border-line pl-4">Un set puede convertirse en <span class="text-off">pieza audiovisual</span>.</p>
+          <p class="border-l-2 border-line pl-4">Un proyecto puede encontrar <span class="text-off">dirección</span>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ THREE WAYS IN ░░ -->
+<section class="border-t border-line bg-concrete">
+  <div class="mx-auto max-w-[1400px] px-5 md:px-8 py-24 md:py-32">
+    <div class="flex items-end justify-between mb-14">
+      <div>
+        <span class="font-grotesk label text-[12px] text-acid">02 — Three ways in</span>
+        <h2 class="font-display text-5xl md:text-7xl tracking-mega mt-3">Choose how your idea<br />becomes sound.</h2>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-px bg-line border border-line">
+      <!-- LEARN -->
+      <a id="learn" href="#book" class="group card-way bg-black p-8 md:p-10 flex flex-col min-h-[440px] overflow-hidden">
+        <img src="assets/live-room.png" alt="Live Room — masterclasses" class="-mt-8 md:-mt-10 -mx-8 md:-mx-10 mb-8 h-44 w-[calc(100%+4rem)] md:w-[calc(100%+5rem)] max-w-none object-cover transition-transform duration-500 group-hover:scale-105" />
+        <div class="flex items-center justify-between mb-8">
+          <span class="font-grotesk label text-[12px] text-mute">Learn</span>
+          <span class="font-display text-2xl text-line group-hover:text-acid transition-colors">↗</span>
+        </div>
+        <h3 class="font-display text-4xl md:text-5xl tracking-mega mb-4">Artist<br />Masterclasses</h3>
+        <p class="font-grotesk text-acid text-sm label mb-5">2 hours · 5 people max · one artist</p>
+        <p class="text-mute leading-relaxed flex-1">Masterclasses intensivas con artistas y profesionales en activo. Sesiones reducidas, prácticas y directas para aprender algo concreto y aplicarlo de inmediato.</p>
+        <div class="mt-8 pt-6 border-t border-line flex items-end justify-between">
+          <span class="text-mute text-sm">Desde</span>
+          <span class="font-display text-4xl tracking-mega">€160<span class="text-mute text-lg">/pers</span></span>
+        </div>
+        <span class="mt-5 font-grotesk label text-sm underline-acid self-start">View upcoming masterclasses</span>
+      </a>
+
+      <!-- CREATE -->
+      <a id="create" href="#book" class="group card-way bg-black p-8 md:p-10 flex flex-col min-h-[440px] overflow-hidden">
+        <img src="assets/control-room.png" alt="Control Room — mentoring" class="-mt-8 md:-mt-10 -mx-8 md:-mx-10 mb-8 h-44 w-[calc(100%+4rem)] md:w-[calc(100%+5rem)] max-w-none object-cover transition-transform duration-500 group-hover:scale-105" />
+        <div class="flex items-center justify-between mb-8">
+          <span class="font-grotesk label text-[12px] text-mute">Create</span>
+          <span class="font-display text-2xl text-line group-hover:text-acid transition-colors">↗</span>
+        </div>
+        <h3 class="font-display text-4xl md:text-5xl tracking-mega mb-4">Artistic<br />Mentoring</h3>
+        <p class="font-grotesk text-acid text-sm label mb-5">Bring the idea · leave with direction</p>
+        <p class="text-mute leading-relaxed flex-1">Sesiones privadas para revisar música, desbloquear procesos, terminar tracks, grabar, producir o construir una dirección artística más clara.</p>
+        <div class="mt-8 pt-6 border-t border-line flex items-end justify-between">
+          <span class="text-mute text-sm">Desde</span>
+          <span class="font-display text-4xl tracking-mega">€120</span>
+        </div>
+        <span class="mt-5 font-grotesk label text-sm underline-acid self-start">Book a creative session</span>
+      </a>
+
+      <!-- PERFORM -->
+      <a id="perform" href="#book" class="group card-way bg-black p-8 md:p-10 flex flex-col min-h-[440px] overflow-hidden">
+        <img src="assets/live-set.png" alt="Live Set" class="-mt-8 md:-mt-10 -mx-8 md:-mx-10 mb-8 h-44 w-[calc(100%+4rem)] md:w-[calc(100%+5rem)] max-w-none object-cover transition-transform duration-500 group-hover:scale-105" />
+        <div class="flex items-center justify-between mb-8">
+          <span class="font-grotesk label text-[12px] text-mute">Perform</span>
+          <span class="font-display text-2xl text-line group-hover:text-acid transition-colors">↗</span>
+        </div>
+        <h3 class="font-display text-4xl md:text-5xl tracking-mega mb-4">Live<br />Sets</h3>
+        <p class="font-grotesk text-acid text-sm label mb-5">Record the sound · shape the image</p>
+        <p class="text-mute leading-relaxed flex-1">Grabación de DJ sets, live acts y performances audiovisuales con audio cuidado, estética WAREHOUSE y dirección artística.</p>
+        <div class="mt-8 pt-6 border-t border-line flex items-end justify-between">
+          <span class="text-mute text-sm">Desde</span>
+          <span class="font-display text-4xl tracking-mega">€550</span>
+        </div>
+        <span class="mt-5 font-grotesk label text-sm underline-acid self-start">Record your live set</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ IMAGE BAND — Entrada ░░ -->
+<section class="relative border-t border-line overflow-hidden">
+  <img src="assets/entrada.png" alt="Entrada WAREHOUSE 9" class="block w-full h-[55vh] md:h-[70vh] object-cover" />
+  <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+  <div class="absolute bottom-0 inset-x-0 p-6 md:p-10">
+    <div class="mx-auto max-w-[1400px]">
+      <span class="font-grotesk label text-[12px] text-mute">Enter the room</span>
+      <p class="font-display text-4xl md:text-6xl tracking-mega mt-2">Where ideas become sound.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ THE ROOM ░░ -->
+<section id="room" class="relative border-t border-line overflow-hidden">
+  <div class="mx-auto max-w-[1400px] px-5 md:px-8 py-24 md:py-36">
+    <div class="grid md:grid-cols-12 gap-10 items-center">
+      <div class="md:col-span-7 reveal">
+        <span class="font-grotesk label text-[12px] text-acid">03 — The room</span>
+        <h2 class="font-display text-5xl md:text-7xl leading-[0.92] tracking-mega mt-3 mb-8">
+          The room matters.<br />
+          <span class="text-acid">The people in the room</span><br />matter more.
+        </h2>
+        <p class="text-mute text-lg leading-relaxed max-w-xl mb-8">
+          WAREHOUSE combina control room, live room y setup de performance para activar experiencias musicales de alto valor. Diseñado para escuchar mejor, decidir mejor, producir mejor y documentar mejor.
+        </p>
+        <a href="#book" class="btn-ghost inline-block font-grotesk font-500 label text-sm px-8 py-4">Enter the room</a>
+      </div>
+      <div class="md:col-span-5 grid grid-cols-1 gap-px bg-line border border-line font-grotesk">
+        <div class="bg-black"><img src="assets/control-room.png" alt="Control Room" class="w-full h-40 object-cover" /><div class="p-6"><span class="text-acid label text-[11px]">Control Room</span><p class="text-mute text-sm mt-2">Producción, grabación, escucha crítica, mentorías y revisión de tracks.</p></div></div>
+        <div class="bg-black"><img src="assets/live-room.png" alt="Live Room" class="w-full h-40 object-cover" /><div class="p-6"><span class="text-acid label text-[11px]">Live Room</span><p class="text-mute text-sm mt-2">Masterclasses, live sets, showcases íntimos y sesiones audiovisuales.</p></div></div>
+        <div class="bg-black"><img src="assets/live-set.png" alt="DJ / Performance Setup" class="w-full h-40 object-cover" /><div class="p-6"><span class="text-acid label text-[11px]">DJ / Performance Setup</span><p class="text-mute text-sm mt-2">Preparación, dirección y captura de sets con criterio técnico y artístico.</p></div></div>
+        <div class="bg-black"><img src="assets/estudio.png" alt="Creative Direction" class="w-full h-40 object-cover" /><div class="p-6"><span class="text-acid label text-[11px]">Creative Direction</span><p class="text-mute text-sm mt-2">Un entorno para que lo que haces suene bien, se vea bien y tenga sentido.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ ARTIST-LED ░░ -->
+<section id="artists" class="border-t border-line bg-concrete">
+  <div class="mx-auto max-w-[1400px] px-5 md:px-8 py-24 md:py-32 reveal">
+    <span class="font-grotesk label text-[12px] text-acid">04 — Artist-led</span>
+    <h2 class="font-display text-5xl md:text-7xl tracking-mega mt-3 max-w-4xl leading-[0.92]">
+      Learn from artists. Shape your sound inside the room.
+    </h2>
+    <p class="text-mute text-lg leading-relaxed max-w-2xl mt-8">
+      Cada masterclass y sesión está guiada por personas que hacen música, producen, graban, performan y acompañan procesos creativos reales. La experiencia se construye con criterio, cercanía y feedback preciso.
+    </p>
+  </div>
+</section>
+
+<!-- ░░ WAREHOUSE SESSIONS (online) ░░ -->
+<section id="sessions" class="border-t border-line">
+  <div class="mx-auto max-w-[1400px] px-5 md:px-8 py-24 md:py-32">
+    <div class="mb-14 reveal">
+      <span class="font-grotesk label text-[12px] text-acid">05 — Online</span>
+      <h2 class="font-display text-5xl md:text-7xl tracking-mega mt-3">WAREHOUSE Sessions</h2>
+      <p class="font-grotesk text-xl md:text-2xl text-off font-500 mt-4">Join the room from anywhere.</p>
+      <p class="text-mute text-lg leading-relaxed max-w-2xl mt-5">
+        Las masterclasses se transmiten en directo desde Barcelona para music makers de cualquier parte del mundo. Cada sesión queda grabada y, con el tiempo, construye un archivo disponible on-demand.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-px bg-line border border-line">
+      <!-- LIVE STREAM -->
+      <div class="bg-black p-8 md:p-10 flex flex-col min-h-[380px]">
+        <div class="flex items-center justify-between mb-8">
+          <span class="font-grotesk label text-[12px] text-mute">Live Stream</span>
+          <span class="flex items-center gap-2 font-grotesk label text-[11px] text-off">
+            <span class="inline-block w-2 h-2 rounded-full bg-off animate-pulse"></span>Available
+          </span>
+        </div>
+        <h3 class="font-display text-4xl md:text-5xl tracking-mega mb-4">Live from<br />the room</h3>
+        <p class="text-mute leading-relaxed flex-1">Asiste en directo a las masterclasses artist-led desde donde estés. Acceso al streaming en vivo y a la grabación durante los días siguientes.</p>
+        <div class="mt-8 pt-6 border-t border-line flex items-end justify-between">
+          <span class="text-mute text-sm">Desde</span>
+          <span class="font-display text-4xl tracking-mega">€45</span>
+        </div>
+        <a href="#book" class="mt-5 font-grotesk label text-sm underline-acid self-start">Join a live session</a>
+      </div>
+
+      <!-- ON DEMAND -->
+      <div class="bg-black p-8 md:p-10 flex flex-col min-h-[380px]">
+        <div class="flex items-center justify-between mb-8">
+          <span class="font-grotesk label text-[12px] text-mute">On Demand</span>
+          <span class="font-grotesk label text-[11px] text-mute border border-line px-2 py-1">Coming soon</span>
+        </div>
+        <h3 class="font-display text-4xl md:text-5xl tracking-mega mb-4">The<br />archive</h3>
+        <p class="text-mute leading-relaxed flex-1">Todo el catálogo de masterclasses grabadas, disponible online por suscripción. Acceso al cuarto, cuando quieras, desde cualquier lugar.</p>
+        <div class="mt-8 pt-6 border-t border-line flex items-end justify-between">
+          <span class="text-mute text-sm">Membership</span>
+          <span class="font-display text-2xl tracking-mega text-mute">2026</span>
+        </div>
+        <a href="#book" class="mt-5 font-grotesk label text-sm underline-acid self-start">Join the waitlist</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ FINAL CTA ░░ -->
+<section id="book" class="relative grain border-t border-line overflow-hidden">
+  <div class="absolute inset-0 z-[2] flex items-center justify-center pointer-events-none">
+    <span class="font-display text-acid/[0.05] text-[30vw] leading-none select-none">W</span>
+  </div>
+  <div class="relative z-10 mx-auto max-w-[1400px] px-5 md:px-8 py-28 md:py-44 text-center">
+    <span class="font-grotesk label text-[12px] text-acid">Final — Ways in</span>
+    <h2 class="font-display text-6xl md:text-9xl tracking-mega mt-4 mb-6">Your sound<br />needs a room.</h2>
+    <p class="text-mute text-lg max-w-xl mx-auto mb-10">Reserva una Intro Session y cuéntanos qué quieres crear.</p>
+    <a href="#top" class="btn-acid inline-block font-grotesk font-600 label px-12 py-5">Book Intro Session</a>
+  </div>
+</section>
+
+<!-- ░░ FOOTER ░░ -->
+<footer class="border-t border-line bg-black">
+  <div class="mx-auto max-w-[1400px] px-5 md:px-8 py-14">
+    <div class="flex flex-col md:flex-row justify-between gap-10">
+      <div>
+        <span class="font-display text-3xl tracking-mega">WAREHOUSE&nbsp;<span class="text-acid">9</span></span>
+        <p class="text-mute text-sm mt-3 max-w-xs">A raw creative space for music makers. Barcelona · Nº 9.</p>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-8 font-grotesk text-sm">
+        <div class="space-y-2">
+          <p class="label text-[11px] text-acid mb-2">Explore</p>
+          <a href="#learn" class="block text-mute hover:text-off">Masterclasses</a>
+          <a href="#create" class="block text-mute hover:text-off">Mentoring</a>
+          <a href="#perform" class="block text-mute hover:text-off">Live Sets</a>
+        </div>
+        <div class="space-y-2">
+          <p class="label text-[11px] text-acid mb-2">Space</p>
+          <a href="#room" class="block text-mute hover:text-off">The Room</a>
+          <a href="#artists" class="block text-mute hover:text-off">Artists</a>
+          <a href="#book" class="block text-mute hover:text-off">Intro Session</a>
+        </div>
+        <div class="space-y-2">
+          <p class="label text-[11px] text-acid mb-2">Contact</p>
+          <a href="#" class="block text-mute hover:text-off">Instagram</a>
+          <a href="#" class="block text-mute hover:text-off">WhatsApp</a>
+          <a href="#" class="block text-mute hover:text-off">hello@warehouse.bcn</a>
+        </div>
+      </div>
+    </div>
+    <div class="mt-14 pt-6 border-t border-line flex flex-col sm:flex-row justify-between gap-3 text-mute text-xs font-grotesk label">
+      <span>© 2026 WAREHOUSE Barcelona</span>
+      <span>Where ideas become sound.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // reveal on scroll
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }});
+  }, { threshold:0.15 });
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

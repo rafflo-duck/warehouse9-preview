@@ -121,6 +121,63 @@
   </div>
 </section>
 
+<!-- ░░ JOURNEY — travelling de cámara: de la calle al estudio ░░ -->
+<section id="journey" class="relative bg-black" style="height:400vh">
+  <div class="sticky top-0 h-screen w-full overflow-hidden grain">
+
+    <!-- frames apilados; JS controla opacity + parallax -->
+    <div class="jf absolute inset-0" style="opacity:1">
+      <img src="assets/entrada.png" alt="Entrada" class="absolute inset-0 w-full h-full object-cover will-change-transform" />
+      <div class="absolute inset-0 bg-gradient-to-t from-black via-black/25 to-black/40"></div>
+      <div class="jf-cap absolute bottom-0 inset-x-0 p-6 md:p-14">
+        <div class="mx-auto max-w-[1400px]">
+          <span class="font-grotesk label text-[12px] text-mute">Nº 9 · Barcelona</span>
+          <p class="font-display text-5xl md:text-8xl tracking-mega mt-2 leading-[0.9]">Enter the room</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="jf absolute inset-0" style="opacity:0">
+      <img src="assets/control-room.png" alt="Control Room" class="absolute inset-0 w-full h-full object-cover will-change-transform" />
+      <div class="absolute inset-0 bg-gradient-to-t from-black via-black/25 to-black/40"></div>
+      <div class="jf-cap absolute bottom-0 inset-x-0 p-6 md:p-14">
+        <div class="mx-auto max-w-[1400px]">
+          <span class="font-grotesk label text-[12px] text-mute">Control Room</span>
+          <p class="font-display text-5xl md:text-8xl tracking-mega mt-2 leading-[0.9]">Where it's shaped</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="jf absolute inset-0" style="opacity:0">
+      <img src="assets/live-room.png" alt="Live Room" class="absolute inset-0 w-full h-full object-cover will-change-transform" />
+      <div class="absolute inset-0 bg-gradient-to-t from-black via-black/25 to-black/40"></div>
+      <div class="jf-cap absolute bottom-0 inset-x-0 p-6 md:p-14">
+        <div class="mx-auto max-w-[1400px]">
+          <span class="font-grotesk label text-[12px] text-mute">Live Room</span>
+          <p class="font-display text-5xl md:text-8xl tracking-mega mt-2 leading-[0.9]">Where it's played</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="jf absolute inset-0" style="opacity:0">
+      <img src="assets/estudio.png" alt="Studio" class="absolute inset-0 w-full h-full object-cover will-change-transform" />
+      <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-black/50"></div>
+      <div class="jf-cap absolute bottom-0 inset-x-0 p-6 md:p-14">
+        <div class="mx-auto max-w-[1400px]">
+          <span class="font-grotesk label text-[12px] text-mute">The Studio</span>
+          <p class="font-display text-5xl md:text-8xl tracking-mega mt-2 leading-[0.9]">Where ideas become sound</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- cue -->
+    <div id="journeyCue" class="absolute top-24 left-1/2 -translate-x-1/2 font-grotesk label text-[11px] text-mute flex flex-col items-center gap-2 transition-opacity duration-500">
+      Scroll to enter
+      <span class="block w-px h-8 bg-mute/50 animate-pulse"></span>
+    </div>
+  </div>
+</section>
+
 <!-- ░░ BRAND STATEMENT ░░ -->
 <section class="border-t border-line">
   <div class="mx-auto max-w-[1400px] px-5 md:px-8 py-24 md:py-36">
@@ -157,7 +214,7 @@
     <div class="grid md:grid-cols-3 gap-px bg-line border border-line">
       <!-- LEARN -->
       <a id="learn" href="#book" class="group card-way bg-black p-8 md:p-10 flex flex-col min-h-[440px] overflow-hidden">
-        <img src="assets/live-room.png" alt="Live Room — masterclasses" class="-mt-8 md:-mt-10 -mx-8 md:-mx-10 mb-8 h-44 w-[calc(100%+4rem)] md:w-[calc(100%+5rem)] max-w-none object-cover transition-transform duration-500 group-hover:scale-105" />
+        <img src="assets/live-room.png" alt="Live Room — masterclasses" class="-mt-8 md:-mt-10 -mx-8 md:-mx-10 mb-8 h-44 w-[calc(100%+4rem)] md:w-[calc(100%+5rem)] max-w-none object-cover" />
         <div class="flex items-center justify-between mb-8">
           <span class="font-grotesk label text-[12px] text-mute">Learn</span>
           <span class="font-display text-2xl text-line group-hover:text-acid transition-colors">↗</span>
@@ -174,7 +231,7 @@
 
       <!-- CREATE -->
       <a id="create" href="#book" class="group card-way bg-black p-8 md:p-10 flex flex-col min-h-[440px] overflow-hidden">
-        <img src="assets/control-room.png" alt="Control Room — mentoring" class="-mt-8 md:-mt-10 -mx-8 md:-mx-10 mb-8 h-44 w-[calc(100%+4rem)] md:w-[calc(100%+5rem)] max-w-none object-cover transition-transform duration-500 group-hover:scale-105" />
+        <img src="assets/control-room.png" alt="Control Room — mentoring" class="-mt-8 md:-mt-10 -mx-8 md:-mx-10 mb-8 h-44 w-[calc(100%+4rem)] md:w-[calc(100%+5rem)] max-w-none object-cover" />
         <div class="flex items-center justify-between mb-8">
           <span class="font-grotesk label text-[12px] text-mute">Create</span>
           <span class="font-display text-2xl text-line group-hover:text-acid transition-colors">↗</span>
@@ -191,7 +248,7 @@
 
       <!-- PERFORM -->
       <a id="perform" href="#book" class="group card-way bg-black p-8 md:p-10 flex flex-col min-h-[440px] overflow-hidden">
-        <img src="assets/live-set.png" alt="Live Set" class="-mt-8 md:-mt-10 -mx-8 md:-mx-10 mb-8 h-44 w-[calc(100%+4rem)] md:w-[calc(100%+5rem)] max-w-none object-cover transition-transform duration-500 group-hover:scale-105" />
+        <img src="assets/live-set.png" alt="Live Set" class="-mt-8 md:-mt-10 -mx-8 md:-mx-10 mb-8 h-44 w-[calc(100%+4rem)] md:w-[calc(100%+5rem)] max-w-none object-cover" />
         <div class="flex items-center justify-between mb-8">
           <span class="font-grotesk label text-[12px] text-mute">Perform</span>
           <span class="font-display text-2xl text-line group-hover:text-acid transition-colors">↗</span>
@@ -205,18 +262,6 @@
         </div>
         <span class="mt-5 font-grotesk label text-sm underline-acid self-start">Record your live set</span>
       </a>
-    </div>
-  </div>
-</section>
-
-<!-- ░░ IMAGE BAND — Entrada ░░ -->
-<section class="relative border-t border-line overflow-hidden">
-  <img src="assets/entrada.png" alt="Entrada WAREHOUSE 9" class="block w-full h-[55vh] md:h-[70vh] object-cover" />
-  <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-  <div class="absolute bottom-0 inset-x-0 p-6 md:p-10">
-    <div class="mx-auto max-w-[1400px]">
-      <span class="font-grotesk label text-[12px] text-mute">Enter the room</span>
-      <p class="font-display text-4xl md:text-6xl tracking-mega mt-2">Where ideas become sound.</p>
     </div>
   </div>
 </section>
@@ -362,6 +407,37 @@
     entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }});
   }, { threshold:0.15 });
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // Travelling de cámara: la calle → el estudio
+  const journey = document.getElementById('journey');
+  if (journey) {
+    const frames = [...journey.querySelectorAll('.jf')];
+    const cue = document.getElementById('journeyCue');
+    const n = frames.length;
+    let ticking = false;
+
+    function render() {
+      ticking = false;
+      const total = journey.offsetHeight - window.innerHeight;
+      const p = Math.min(1, Math.max(0, -journey.getBoundingClientRect().top / total));
+      const seg = p * (n - 1);                 // posición sobre las tomas
+      frames.forEach((f, i) => {
+        const d = Math.abs(seg - i);
+        f.style.opacity = Math.max(0, 1 - d);  // crossfade
+        const img = f.firstElementChild;
+        const cap = f.querySelector('.jf-cap');
+        const near = Math.min(1, d);
+        // parallax mínimo: escala máx 1.04 + leve desplazamiento (fotos no-HD)
+        img.style.transform = `scale(${(1.04 - near * 0.04).toFixed(3)}) translateY(${(near * -12).toFixed(1)}px)`;
+        if (cap) cap.style.transform = `translateY(${(near * 24).toFixed(1)}px)`;
+      });
+      if (cue) cue.style.opacity = p > 0.04 ? 0 : 1;
+    }
+    function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(render); } }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    render();
+  }
 </script>
 </body>
 </html>
