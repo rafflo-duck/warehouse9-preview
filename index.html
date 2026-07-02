@@ -74,6 +74,18 @@
 
   .card-way{ transition:transform .3s ease, border-color .3s ease, background .3s ease; }
   .card-way:hover{ transform:translateY(-4px); border-color:#5a5a5a; background:#1e1e1e; }
+
+  .animated-gradient{
+    position:relative;
+    background:linear-gradient(45deg, #FFE220 0%, #9d0e5c 50%, #8800f5 100%);
+    background-size:300% 300%;
+    animation:gradient-radial 8s ease alternate infinite;
+    overflow:hidden;
+  }
+  @keyframes gradient-radial{
+    0%{ background-position:0% 50%; }
+    100%{ background-position:100% 50%; }
+  }
 </style>
 </head>
 
@@ -356,36 +368,37 @@
 </section>
 
 <!-- ░░ FOOTER ░░ -->
-<footer class="border-t border-line bg-black">
-  <div class="mx-auto max-w-[1400px] px-5 md:px-8 py-14">
-    <div class="flex flex-col md:flex-row justify-between gap-10">
+<footer class="animated-gradient border-t border-line">
+  <div class="absolute inset-0 bg-black/20 pointer-events-none"></div>
+  <div class="relative z-10 mx-auto max-w-[1800px] px-6 md:px-14 py-20 md:py-28 text-white">
+    <div class="flex flex-col md:flex-row justify-between gap-12">
       <div>
-        <span class="font-display text-3xl tracking-mega">WAREHOUSE&nbsp;<span class="text-acid">9</span></span>
-        <p class="text-mute text-sm mt-3 max-w-xs">Ferrer i Vidal, 9 · Barcelona.</p>
+        <span class="font-display text-4xl md:text-6xl tracking-mega">WAREHOUSE&nbsp;9</span>
+        <p class="text-white/85 text-sm mt-4 max-w-xs">Ferrer i Vidal, 9 · Barcelona.</p>
       </div>
-      <div class="grid grid-cols-2 sm:grid-cols-3 gap-8 font-grotesk text-sm">
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-8 md:gap-16 font-grotesk text-sm">
         <div class="space-y-2">
-          <p class="label text-[11px] text-acid mb-2">Explore</p>
-          <a href="#learn" class="block text-mute hover:text-off">Masterclasses</a>
-          <a href="#create" class="block text-mute hover:text-off">Mentoring</a>
-          <a href="#perform" class="block text-mute hover:text-off">Live Sets</a>
+          <p class="label text-[11px] text-white/70 mb-2">Explore</p>
+          <a href="#learn" class="block text-white/90 hover:text-white transition-colors">Masterclasses</a>
+          <a href="#create" class="block text-white/90 hover:text-white transition-colors">Mentoring</a>
+          <a href="#perform" class="block text-white/90 hover:text-white transition-colors">Live Sets</a>
         </div>
         <div class="space-y-2">
-          <p class="label text-[11px] text-acid mb-2">Space</p>
-          <a href="#room" class="block text-mute hover:text-off">The Room</a>
-          <a href="#artists" class="block text-mute hover:text-off">Artists</a>
-          <a href="#book" class="block text-mute hover:text-off">Intro Session</a>
+          <p class="label text-[11px] text-white/70 mb-2">Space</p>
+          <a href="#room" class="block text-white/90 hover:text-white transition-colors">The Room</a>
+          <a href="#artists" class="block text-white/90 hover:text-white transition-colors">Artists</a>
+          <a href="#book" class="block text-white/90 hover:text-white transition-colors">Intro Session</a>
         </div>
         <div class="space-y-2">
-          <p class="label text-[11px] text-acid mb-2">Contact</p>
-          <a href="#" class="block text-mute hover:text-off">Instagram</a>
-          <a href="#" class="block text-mute hover:text-off">WhatsApp</a>
-          <a href="#" class="block text-mute hover:text-off">hello@warehouse.bcn</a>
+          <p class="label text-[11px] text-white/70 mb-2">Contact</p>
+          <a href="#" class="block text-white/90 hover:text-white transition-colors">Instagram</a>
+          <a href="#" class="block text-white/90 hover:text-white transition-colors">WhatsApp</a>
+          <a href="#" class="block text-white/90 hover:text-white transition-colors">hello@warehouse.bcn</a>
         </div>
       </div>
     </div>
-    <div class="mt-14 pt-6 border-t border-line flex flex-col sm:flex-row justify-between gap-3 text-mute text-xs font-grotesk label">
-      <span>© 2026 WAREHOUSE Barcelona</span>
+    <div class="mt-16 pt-6 border-t border-white/25 flex flex-col sm:flex-row justify-between gap-3 text-white/80 text-xs font-grotesk label">
+      <span>© 2026 WAREHOUSE 9 · Barcelona</span>
       <span>Where ideas become sound.</span>
     </div>
   </div>
