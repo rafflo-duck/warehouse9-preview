@@ -94,23 +94,7 @@
     <!-- 01 · La calle — el portón con la W -->
     <div class="jf absolute inset-0" style="opacity:1">
       <img src="assets/hero.png" alt="Fachada WAREHOUSE 9 — calle" class="absolute inset-0 w-full h-full object-cover" />
-      <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/50"></div>
-      <div class="jf-cap absolute inset-x-0 bottom-0 p-6 md:p-14">
-        <div class="mx-auto max-w-[1400px]">
-          <div class="flex items-center gap-3 mb-5 font-grotesk text-[12px] label text-mute">
-            <span class="inline-block w-2 h-2 rounded-full bg-off"></span> Barcelona · Nº 9
-          </div>
-          <h1 class="font-display text-[16vw] md:text-[11vw] leading-[0.82] tracking-mega text-off">WAREHOUSE&nbsp;<span class="text-mute">9</span></h1>
-          <p class="mt-6 font-grotesk text-lg md:text-2xl text-off font-500 leading-snug max-w-2xl">
-            A raw creative space for music makers.<br class="hidden md:block" />
-            A school, a studio and a live room where ideas become sound.
-          </p>
-          <div class="mt-8 flex flex-wrap gap-3">
-            <a href="#book" class="btn-acid font-grotesk font-600 label text-sm px-8 py-4">Book Intro Session</a>
-            <a href="#learn" class="btn-ghost font-grotesk font-500 label text-sm px-8 py-4">View Masterclasses</a>
-          </div>
-        </div>
-      </div>
+      <div class="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-black/15"></div>
     </div>
 
     <!-- 02 · El pasillo — sillones + puertas de los estudios -->
@@ -118,8 +102,18 @@
       <img src="assets/entrada.png" alt="Pasillo — acceso a los estudios" class="absolute inset-0 w-full h-full object-cover" />
       <div class="absolute inset-0 bg-gradient-to-t from-black via-black/25 to-black/40"></div>
       <div class="jf-cap absolute bottom-0 inset-x-0 p-6 md:p-14"><div class="mx-auto max-w-[1400px]">
-        <span class="font-grotesk label text-[12px] text-mute">Inside</span>
-        <p class="font-display text-5xl md:text-8xl tracking-mega mt-2 leading-[0.9]">Cross the door</p>
+        <div class="flex items-center gap-3 mb-5 font-grotesk text-[12px] label text-mute">
+          <span class="inline-block w-2 h-2 rounded-full bg-off"></span> Barcelona · Nº 9
+        </div>
+        <h1 class="font-display text-[16vw] md:text-[11vw] leading-[0.82] tracking-mega text-off">WAREHOUSE&nbsp;<span class="text-mute">9</span></h1>
+        <p class="mt-6 font-grotesk text-lg md:text-2xl text-off font-500 leading-snug max-w-2xl">
+          A raw creative space for music makers.<br class="hidden md:block" />
+          A school, a studio and a live room where ideas become sound.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="#book" class="btn-acid font-grotesk font-600 label text-sm px-8 py-4">Book Intro Session</a>
+          <a href="#learn" class="btn-ghost font-grotesk font-500 label text-sm px-8 py-4">View Masterclasses</a>
+        </div>
       </div></div>
     </div>
 
@@ -409,7 +403,9 @@
       const seg = p * (n - 1);                 // posición de la cámara sobre las tomas
       frames.forEach((f, i) => {
         const delta = seg - i;                 // <0 aún no llegamos · >0 ya lo cruzamos
-        f.style.opacity = Math.max(0, 1 - Math.abs(delta));
+        const op = Math.max(0, 1 - Math.abs(delta));
+        f.style.opacity = op;
+        f.style.pointerEvents = op > 0.5 ? 'auto' : 'none';  // solo el plano visible recibe clics
         // dolly: el plano que dejamos atrás se agranda y se disuelve (lo atravesamos);
         // el que viene llega desde algo más lejos. En reposo queda a escala ~1 (nítido, no-HD).
         const scale = delta >= 0 ? 1.02 + delta * 0.6 : 1.02 + delta * 0.10;
