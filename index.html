@@ -29,7 +29,7 @@
           acid: '#ededea',          // acento monocromo (off-white)
         },
         fontFamily: {
-          display: ['"Bebas Neue"', 'sans-serif'],
+          display: ['Holborn', '"Bebas Neue"', 'sans-serif'],
           grotesk: ['"Space Grotesk"', 'sans-serif'],
           body: ['Inter', 'sans-serif'],
         },
@@ -39,6 +39,13 @@
 </script>
 
 <style>
+  @font-face{
+    font-family:'Holborn';
+    src:url('assets/Holborn-VF.ttf') format('truetype');
+    font-weight:100 900;
+    font-style:normal;
+    font-display:swap;
+  }
   html { scroll-behavior: smooth; }
   body { background:#0a0a0a; }
   ::selection { background:#ededea; color:#0a0a0a; }
