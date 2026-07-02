@@ -29,7 +29,8 @@
           acid: '#ededea',          // acento monocromo (off-white)
         },
         fontFamily: {
-          display: ['Holborn', '"Bebas Neue"', 'sans-serif'],
+          display: ['"Bebas Neue"', 'sans-serif'],
+          logo: ['Holborn', '"Bebas Neue"', 'sans-serif'],
           grotesk: ['"Space Grotesk"', 'sans-serif'],
           body: ['Inter', 'sans-serif'],
         },
@@ -51,7 +52,6 @@
   ::selection { background:#ededea; color:#0a0a0a; }
 
   .tracking-mega { letter-spacing: 0.02em; }
-  .font-display { text-transform: uppercase; }
   .label { letter-spacing: 0.28em; text-transform: uppercase; }
 
   /* grano/textura sutil de estudio */
@@ -82,7 +82,7 @@
 <!-- ░░ HEADER STICKY ░░ -->
 <header class="fixed top-0 inset-x-0 z-50 border-b border-line/60 bg-black/80 backdrop-blur-md">
   <div class="mx-auto max-w-[1400px] px-5 md:px-8 h-16 flex items-center justify-between">
-    <a href="#top" class="font-display text-2xl tracking-mega leading-none">WAREHOUSE&nbsp;<span class="text-acid">9</span></a>
+    <a href="#top" class="font-logo text-2xl tracking-mega leading-none">WAREHOUSE&nbsp;<span class="text-acid">9</span></a>
     <nav class="hidden lg:flex items-center gap-8 font-grotesk text-[13px] label text-mute">
       <a href="#learn"   class="hover:text-off transition-colors">Masterclasses</a>
       <a href="#create"  class="hover:text-off transition-colors">Mentoring</a>
