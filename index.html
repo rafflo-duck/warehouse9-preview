@@ -75,6 +75,14 @@
   .card-way{ transition:transform .3s ease, border-color .3s ease, background .3s ease; }
   .card-way:hover{ transform:translateY(-4px); border-color:#5a5a5a; background:#1e1e1e; }
 
+  /* Choose your mentor */
+  .genre-tab{ color:#8a8a85; transition:color .2s ease, background .2s ease, border-color .2s ease; }
+  .genre-tab:hover{ color:#ededea; border-color:#5a5a5a; }
+  .genre-tab.is-active{ background:#ededea; color:#0a0a0a; border-color:#ededea; }
+  .mentor-card img{ transition:filter .5s ease; }
+  .mentor-card:hover img{ filter:grayscale(0); }
+  .mentor-card:hover .btn-ghost{ border-color:#ededea; }
+
   .animated-gradient{
     position:relative;
     background:linear-gradient(45deg, #FFE220 0%, #9d0e5c 50%, #8800f5 100%);
@@ -167,7 +175,7 @@
 
     <div class="grid md:grid-cols-3 gap-px bg-line border border-line">
       <!-- LEARN -->
-      <a id="learn" href="#book" class="group card-way bg-black p-8 md:p-10 flex flex-col min-h-[440px] overflow-hidden">
+      <a id="learn" href="#masterclasses" class="group card-way bg-black p-8 md:p-10 flex flex-col min-h-[440px] overflow-hidden">
         <img src="assets/live-room.png" alt="Live Room — masterclasses" class="-mt-8 md:-mt-10 -mx-8 md:-mx-10 mb-8 h-44 w-[calc(100%+4rem)] md:w-[calc(100%+5rem)] max-w-none object-cover" />
         <div class="flex items-center justify-between mb-8">
           <span class="font-grotesk label text-[12px] text-mute">Learn</span>
@@ -217,6 +225,24 @@
         <span class="mt-5 font-grotesk label text-sm underline-acid self-start">Record your live set</span>
       </a>
     </div>
+  </div>
+</section>
+
+<!-- ░░ CHOOSE YOUR MENTOR (masterclasses) ░░ -->
+<section id="masterclasses" class="border-t border-line bg-black scroll-mt-16">
+  <div class="mx-auto max-w-[1400px] px-5 md:px-8 py-24 md:py-32">
+    <div class="mb-12 reveal">
+      <span class="font-grotesk label text-[12px] text-acid">Masterclasses — Choose your player</span>
+      <h2 class="font-display text-5xl md:text-7xl tracking-mega mt-3">Choose your mentor.</h2>
+      <p class="text-mute leading-relaxed max-w-2xl mt-5">Elige el artista con el que quieres trabajar. Cada masterclass son 90 minutos, 5 personas máximo, un solo artista. Selecciona tu mentor y reserva.</p>
+    </div>
+
+    <!-- Genre tabs (generados por JS) -->
+    <div class="flex flex-wrap gap-2 mb-12 reveal" id="genre-tabs"></div>
+
+    <!-- Grids de mentores (generados por JS) -->
+    <div id="mentor-grids"></div>
+
   </div>
 </section>
 
@@ -362,7 +388,8 @@
   <div class="relative z-10 mx-auto max-w-[1400px] px-5 md:px-8 py-28 md:py-44 text-center">
     <span class="font-grotesk label text-[12px] text-acid">Final — Ways in</span>
     <h2 class="font-display text-6xl md:text-9xl tracking-mega mt-4 mb-6">Your sound<br />needs a room.</h2>
-    <p class="text-mute text-lg max-w-xl mx-auto mb-10">Reserva una Intro Session y cuéntanos qué quieres crear.</p>
+    <p class="text-mute text-lg max-w-xl mx-auto mb-6">Reserva una Intro Session y cuéntanos qué quieres crear.</p>
+    <p id="mentor-pick" class="hidden font-grotesk label text-sm text-acid mb-8">Mentor elegido — <span id="mentor-pick-name" class="text-off"></span></p>
     <a href="#top" class="btn-acid inline-block font-grotesk font-600 label px-12 py-5">Book Intro Session</a>
   </div>
 </section>
@@ -405,6 +432,98 @@
 </footer>
 
 <script>
+  // ░░ CHOOSE YOUR MENTOR ░░
+  // Para editar: agrega/quita nombres en cada género. slug = nombre del archivo
+  // de foto en assets/mentors/<slug>.jpg. tag = texto bajo el nombre (opcional).
+  // Cada género se rellena hasta 5 tarjetas con slots "Coming soon".
+  const MENTOR_SLOTS = 5;
+  const GENRES = [
+    { key:'techno', label:'Techno', mentors:[
+      { name:'Axel Barros', tag:'The Unborn Child', slug:'axel-barros' },
+      { name:'Vendex',        tag:'Techno', slug:'vendex' },
+      { name:'Flug',          tag:'Techno', slug:'flug' },
+      { name:'Andrés Campos', tag:'Techno', slug:'andres-campos' },
+      { name:'Dokser',        tag:'Techno', slug:'dokser' },
+    ]},
+    { key:'tech-house', label:'Tech-House', mentors:[] },
+    { key:'house',      label:'House',      mentors:[] },
+    { key:'minimal',    label:'Minimal',    mentors:[] },
+    { key:'melodic',    label:'Melodic',    mentors:[] },
+  ];
+
+  const initials = (name) => {
+    const p = name.trim().split(/\s+/);
+    return (p.length > 1 ? p[0][0] + p[1][0] : name.slice(0,2)).toUpperCase();
+  };
+
+  function mentorCard(m, genreLabel) {
+    const tag = m.tag || genreLabel;
+    const dataMentor = (m.tag && m.tag !== genreLabel) ? `${m.name} — ${m.tag}` : m.name;
+    return `
+      <div class="mentor-card bg-black flex flex-col">
+        <div class="relative aspect-square bg-concrete2 overflow-hidden">
+          <span class="absolute inset-0 flex items-center justify-center font-display text-6xl text-line select-none">${initials(m.name)}</span>
+          <img src="assets/mentors/${m.slug}.jpg" alt="${m.name}" onerror="this.remove()" class="relative z-10 w-full h-full object-cover grayscale transition duration-500" />
+        </div>
+        <div class="p-5 flex flex-col flex-1">
+          <h3 class="font-display text-2xl tracking-mega leading-none">${m.name}</h3>
+          <p class="font-grotesk text-mute text-[12px] label mt-1 flex-1">${tag}</p>
+          <a href="#book" class="select-mentor mt-4 block text-center font-grotesk label text-[11px] btn-ghost px-4 py-3" data-mentor="${dataMentor}" data-genre="${genreLabel}">Select your mentor</a>
+        </div>
+      </div>`;
+  }
+
+  function slotCard(genreLabel) {
+    return `
+      <div class="mentor-card bg-black flex flex-col opacity-60">
+        <div class="relative aspect-square bg-concrete2 overflow-hidden">
+          <span class="absolute inset-0 flex items-center justify-center font-display text-5xl text-line select-none">+</span>
+        </div>
+        <div class="p-5 flex flex-col flex-1">
+          <h3 class="font-display text-2xl tracking-mega leading-none text-mute">Coming soon</h3>
+          <p class="font-grotesk text-mute text-[12px] label mt-1 flex-1">${genreLabel}</p>
+          <span class="mt-4 block text-center font-grotesk label text-[11px] border border-line text-mute px-4 py-3">Próximamente</span>
+        </div>
+      </div>`;
+  }
+
+  const tabsWrap = document.getElementById('genre-tabs');
+  const gridsWrap = document.getElementById('mentor-grids');
+  if (tabsWrap && gridsWrap) {
+    GENRES.forEach((g, i) => {
+      const active = i === 0;
+      tabsWrap.insertAdjacentHTML('beforeend',
+        `<button data-genre="${g.key}" class="genre-tab ${active ? 'is-active' : ''} font-grotesk label text-[12px] px-6 py-3 border border-line">${g.label}</button>`);
+      let cards = g.mentors.map(m => mentorCard(m, g.label)).join('');
+      for (let k = g.mentors.length; k < MENTOR_SLOTS; k++) cards += slotCard(g.label);
+      gridsWrap.insertAdjacentHTML('beforeend',
+        `<div class="genre-grid ${active ? 'grid' : 'hidden'} grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-px bg-line border border-line" data-genre="${g.key}">${cards}</div>`);
+    });
+
+    // tabs
+    const genreTabs = tabsWrap.querySelectorAll('.genre-tab');
+    const genreGrids = gridsWrap.querySelectorAll('.genre-grid');
+    genreTabs.forEach(tab => tab.addEventListener('click', () => {
+      const g = tab.dataset.genre;
+      genreTabs.forEach(t => t.classList.toggle('is-active', t === tab));
+      genreGrids.forEach(grid => {
+        const match = grid.dataset.genre === g;
+        grid.classList.toggle('hidden', !match);
+        grid.classList.toggle('grid', match);
+      });
+    }));
+
+    // selección → indicador en booking
+    const pick = document.getElementById('mentor-pick');
+    const pickName = document.getElementById('mentor-pick-name');
+    gridsWrap.querySelectorAll('.select-mentor').forEach(btn => btn.addEventListener('click', () => {
+      if (pick && pickName) {
+        pickName.textContent = btn.dataset.mentor + ' · ' + btn.dataset.genre;
+        pick.classList.remove('hidden');
+      }
+    }));
+  }
+
   // reveal on scroll
   const io = new IntersectionObserver((entries)=>{
     entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }});
